@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: black;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden; /* Permanently hide horizontal scrollbar */
+}
+
+/* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+  overflow-x: hidden; /* Permanently hide horizontal scrollbar */
+}
+
+/* Hide scrollbar for IE and Edge legacy */
+html,
+body {
+  -ms-overflow-style: none;
+}
+
+/* Page transition styles - prioritized over scroll animations */
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+  overflow-y: auto; /* Allow vertical scrolling but hide scrollbar */
+  overflow-x: hidden; /* Permanently hide horizontal scrollbar */
+}
+
+/* Permanently hide scrollbars */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit browsers */
+}
+
+html.page-transitioning {
+  overflow: hidden; /* Prevent scroll during page transitions */
+}
+
+body.page-transitioning {
+  pointer-events: none; /* Prevent interactions during transitions */
+}
+
+/* Ensure page transitions take precedence */
+[data-page-transition] {
+  will-change: opacity, filter;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
