@@ -1,6 +1,7 @@
 export interface Product {
   id?: string;
   name: string;
+  position: number;
   description: string;
   logo_url: string;
   createdAt?: string;
@@ -8,8 +9,15 @@ export interface Product {
 }
 
 export interface ProductsResponse {
-  status: string;
+  status: boolean;
   statusCode: number;
+  message: string;
   data: Product[];
-  total?: number;
+}
+
+export interface PortfolioWork {
+  src: string;
+  alt: string;
+  id?: string;
+  position: number;
 }

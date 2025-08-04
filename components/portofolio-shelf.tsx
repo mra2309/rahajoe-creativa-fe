@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useMemo, useEffect } from "react";
 import { useProducts } from "@/hooks/use-product";
+import { PortfolioWork } from "@/types/product";
 
 export function PortofolioShelf() {
   const {
@@ -9,21 +10,22 @@ export function PortofolioShelf() {
     isLoading: isProductsLoading,
     error,
   } = useProducts();
-  const [displayedWorks, setDisplayedWorks] = useState<
-    Array<{ src: string; alt: string; id?: string }>
-  >([]);
+  const [displayedWorks, setDisplayedWorks] = useState<PortfolioWork[]>([]);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [newItemsLoaded, setNewItemsLoaded] = useState(false);
 
-  // Transform products data to match the expected format
-  const portfolioWorks = useMemo(() => {
+  // Transform products data to match the expected format and sort by position
+  const portfolioWorks = useMemo((): PortfolioWork[] => {
     if (!productsData?.data) return [];
-    return productsData.data.map((product, index) => ({
-      src: product.logo_url,
-      alt: product.name || `portfolio-${index + 1}`,
-      id: product.id,
-    }));
+    return productsData.data
+      .sort((a, b) => a.position - b.position) // Sort by position ascending
+      .map((product, index) => ({
+        src: product.logo_url,
+        alt: product.name || `portfolio-${index + 1}`,
+        id: product.id,
+        position: product.position,
+      }));
   }, [productsData]);
 
   // Initialize displayed works when products are loaded
