@@ -44,7 +44,7 @@ export const sendEmail = async (data: {
   // return await sendWithNodemailer(data);
 
   // For now, just log the email data
-  console.log("Email to be sent:", data);
+  //   console.log("Email to be sent:", data);
   return { success: true };
 };
 
@@ -77,7 +77,7 @@ export const sendWithSendGrid = async (data: {
     throw error;
   }
   */
-  console.log("SendGrid email (mock):", data);
+  //   console.log("SendGrid email (mock):", data);
   return { success: true };
 };
 
@@ -108,7 +108,7 @@ export const sendWithResend = async (data: {
     throw error;
   }
   */
-  console.log("Resend email (mock):", data);
+  //   console.log("Resend email (mock):", data);
   return { success: true };
 };
 
@@ -145,6 +145,6 @@ export const sendWithNodemailer = async (data: {
     throw error;
   }
   */
-  console.log("Nodemailer email (mock):", data);
+  //   console.log("Nodemailer email (mock):", data);
   return { success: true };
 };

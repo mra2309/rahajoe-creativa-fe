@@ -7,12 +7,9 @@ export const useCreateContact = () => {
 
   return useMutation<ContactResponse, Error, CreateContactRequest>({
     mutationFn: createContact,
-    onSuccess: (data) => {
+    onSuccess: () => {
       // Optionally invalidate and refetch any contact-related queries
       queryClient.invalidateQueries({ queryKey: ["contacts"] });
-
-      // Log success for debugging
-      console.log("Contact created successfully:", data);
     },
     onError: (error) => {
       // Log error for debugging

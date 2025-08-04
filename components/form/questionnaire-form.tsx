@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Image from "next/image";
 import { PopupNotification } from "../popup-notification";
 import { useCreateOrder } from "@/hooks/use-create-order";
+import { FileUpload } from "../file-upload";
 
 // Zod Schema for form validation
 const questionnaireSchema = z.object({
@@ -43,7 +43,7 @@ const questionnaireSchema = z.object({
   logoColorPreferences: z.string().optional(),
   logoMessage: z.string().optional(),
   logoIdea: z.string().optional(),
-  logoExamples: z.any().optional(), // File array handling
+  logoExamples: z.array(z.string()).optional(), // Array of URLs from UploadThing
   designStyles: z.array(z.string()).optional(),
   websiteSocial: z.string().optional(),
   otherComments: z.string().optional(),
@@ -87,7 +87,7 @@ export function QuestionnaireForm() {
       logoColorPreferences: "",
       logoMessage: "",
       logoIdea: "",
-      logoExamples: null,
+      logoExamples: [],
       designStyles: [],
       websiteSocial: "",
       otherComments: "",
@@ -106,7 +106,6 @@ export function QuestionnaireForm() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Use the custom order creation hook
   const createOrderMutation = useCreateOrder();
@@ -120,76 +119,30 @@ export function QuestionnaireForm() {
     { id: "budget-others", value: "others", label: "Others" },
   ];
 
-  const handleFileChange = (files: FileList | null) => {
-    if (files) {
-      const fileArray = Array.from(files);
-      const maxFileSize = 10 * 1024 * 1024; // 10MB in bytes
-      const maxFiles = 10;
-
-      // Filter files by size and limit count
-      const validFiles = fileArray
-        .filter((file) => {
-          if (file.size > maxFileSize) {
-            alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
-            return false;
-          }
-          return true;
-        })
-        .slice(0, maxFiles);
-
-      if (
-        validFiles.length !== fileArray.length &&
-        fileArray.length > maxFiles
-      ) {
-        alert(`You can only upload up to ${maxFiles} files.`);
-      }
-
-      // Combine with existing files if any
-      const currentFiles = watch("logoExamples") || [];
-      const combinedFiles = [...currentFiles, ...validFiles].slice(0, maxFiles);
-
-      // Update React Hook Form
-      setValue("logoExamples", combinedFiles.length > 0 ? combinedFiles : null);
-    }
-  };
-
-  const removeFile = (indexToRemove: number) => {
+  // Handle file upload from UploadThing
+  const handleFilesUploaded = (
+    uploadedFiles: Array<{ url: string; name: string; key: string }>
+  ) => {
     const currentFiles = watch("logoExamples") || [];
-    const newFiles = currentFiles.filter(
-      (_: File, index: number) => index !== indexToRemove
-    );
-
-    // Clear the file input if no files remain
-    if (newFiles.length === 0 && fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
-
-    // Update React Hook Form
-    setValue("logoExamples", newFiles.length > 0 ? newFiles : null);
+    const newUrls = uploadedFiles.map((file) => file.url);
+    const combinedUrls = [...currentFiles, ...newUrls];
+    setValue("logoExamples", combinedUrls);
   };
-  // Cleanup object URLs when component unmounts or files change
-  useEffect(() => {
-    const logoFiles = watch("logoExamples");
-    return () => {
-      if (logoFiles) {
-        logoFiles.forEach((file: File) => {
-          URL.revokeObjectURL(URL.createObjectURL(file));
-        });
-      }
-    };
-  }, [watch]);
 
-  const cleanupFiles = () => {
-    const logoFiles = watch("logoExamples");
-    if (logoFiles) {
-      logoFiles.forEach((file: File) => {
-        URL.revokeObjectURL(URL.createObjectURL(file));
-      });
-    }
-    // Clear the file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
+  // Handle file deletion
+  const handleFileDeleted = (fileUrl: string) => {
+    const currentFiles = watch("logoExamples") || [];
+    const updatedFiles = currentFiles.filter((url) => url !== fileUrl);
+    setValue("logoExamples", updatedFiles.length > 0 ? updatedFiles : []);
+  };
+
+  // Convert URLs to UploadedFile format for the component
+  const convertUrlsToUploadedFiles = (urls: string[]) => {
+    return urls.map((url, index) => ({
+      url,
+      name: `Logo example ${index + 1}`,
+      key: url.split("/").pop() || `file-${index}`,
+    }));
   };
 
   const handleBudgetChange = (value: string) => {
@@ -294,9 +247,8 @@ export function QuestionnaireForm() {
 
       await createOrderMutation.mutateAsync(orderData);
 
-      // Show success popup and cleanup/reset form
+      // Show success popup and reset form
       setShowSuccessPopup(true);
-      cleanupFiles();
       reset();
     } catch (error) {
       console.error("Failed to submit order:", error);
@@ -679,64 +631,14 @@ export function QuestionnaireForm() {
           Would you tell me some examples of logos you like?
         </label>
         <span className="text-sm md:text-base text-gray-400">
-          Upload a maximum of 10 files supported—Max 10MB per file.
-          {watchLogoExamples && watchLogoExamples.length > 0 && (
-            <span className="text-blue-600 font-medium ml-2">
-              ({watchLogoExamples.length}/10 files uploaded)
-            </span>
-          )}
+          Upload a maximum of 10 files supported—Max 8MB per file.
         </span>
-        <div className="">
-          <input
-            ref={fileInputRef}
-            type="file"
-            id="logoExamples"
-            name="logoExamples"
-            accept="image/*"
-            multiple
-            onChange={(e) => handleFileChange(e.target.files)}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
-          />
-        </div>
-
-        {/* Image Preview Section */}
-        {watchLogoExamples && watchLogoExamples.length > 0 && (
-          <div className="mt-4">
-            <h4 className="font-semibold text-sm md:text-base mb-3">
-              Uploaded Images:
-            </h4>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {watchLogoExamples.map((file: File, index: number) => (
-                <div key={index} className="relative group">
-                  <div className="aspect-square border-2 border-gray-200 rounded-lg overflow-hidden bg-gray-50">
-                    <Image
-                      src={URL.createObjectURL(file)}
-                      alt={`Logo example ${index + 1}`}
-                      width={200}
-                      height={200}
-                      className="w-full h-full object-cover"
-                      unoptimized
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => removeFile(index)}
-                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600 transition-colors"
-                    aria-label={`Remove ${file.name}`}
-                  >
-                    ×
-                  </button>
-                  <p
-                    className="text-xs text-gray-600 mt-1 truncate"
-                    title={file.name}
-                  >
-                    {file.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <FileUpload
+          onFilesUploaded={handleFilesUploaded}
+          onFileDeleted={handleFileDeleted}
+          maxFiles={10}
+          currentFiles={convertUrlsToUploadedFiles(watchLogoExamples || [])}
+        />
       </div>
       <div className="bg-white border-[1px] p-6 md:p-8 flex flex-col gap-10 border-gray-300 rounded-md">
         <label className="font-bold text-sm md:text-base">
