@@ -7,12 +7,9 @@ export const useCreateOrder = () => {
 
   return useMutation<CreateOrderResponse, Error, CreateOrderRequest>({
     mutationFn: createOrder,
-    onSuccess: (data) => {
+    onSuccess: () => {
       // Optionally invalidate and refetch any order-related queries
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-
-      // Log success for debugging
-      console.log("Order created successfully:", data);
     },
     onError: (error) => {
       // Log error for debugging
