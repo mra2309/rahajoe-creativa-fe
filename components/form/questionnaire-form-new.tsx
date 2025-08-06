@@ -11,6 +11,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -260,9 +261,6 @@ export function QuestionnaireForm() {
       // Show success popup and reset form
       setShowSuccessPopup(true);
       reset();
-
-      // Scroll to top of the page
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Failed to submit order:", error);
       // Error handling is already done in the mutation hook
@@ -310,7 +308,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                   <span className="absolute text-red-500 right-2 top-3">*</span>
-                  <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                  <FormMessage className="text-blue-500 text-sm font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -329,7 +327,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                   <span className="absolute text-red-500 right-2 top-3">*</span>
-                  <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                  <FormMessage className="text-red-500 text-xs mt-1" />
                 </FormItem>
               )}
             />
@@ -355,7 +353,7 @@ export function QuestionnaireForm() {
                   />
                 </FormControl>
                 <span className="absolute text-red-500 right-2 top-3">*</span>
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs mt-1" />
               </FormItem>
             )}
           />
@@ -369,7 +367,7 @@ export function QuestionnaireForm() {
           <FormField
             control={form.control}
             name="budget"
-            render={() => (
+            render={({ field }) => (
               <FormItem>
                 <div className="mt-4 relative">
                   <div
@@ -490,7 +488,7 @@ export function QuestionnaireForm() {
                   </div>
                 )}
 
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs mt-1" />
               </FormItem>
             )}
           />
@@ -900,7 +898,7 @@ export function QuestionnaireForm() {
           <FormField
             control={form.control}
             name="portfolioPermission"
-            render={() => (
+            render={({ field }) => (
               <FormItem>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
                   <div className="flex items-center space-x-4 text-sm md:text-base">
@@ -932,7 +930,7 @@ export function QuestionnaireForm() {
                     <label htmlFor="no">No</label>
                   </div>
                 </div>
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs mt-1" />
               </FormItem>
             )}
           />
