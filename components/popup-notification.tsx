@@ -22,7 +22,10 @@ export function PopupNotification({ onClose }: { onClose: () => void }) {
             Thank You!
           </h2>
           <p className="text-sm md:text-lg font-light tracking-wide">
-            You details has been successfully submitted. Thanks!
+            You details has been successfully submitted.
+          </p>
+          <p className="text-sm md:text-lg font-light tracking-wide">
+            We&apos;ll be in touch soon.
           </p>
         </div>
         <button
