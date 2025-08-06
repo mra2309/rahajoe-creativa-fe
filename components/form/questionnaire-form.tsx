@@ -480,12 +480,17 @@ export function QuestionnaireForm() {
           Please state if you would like to incorporate a slogan/tagline
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             id="slogan"
             {...register("slogan")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -494,11 +499,16 @@ export function QuestionnaireForm() {
           Is there a unique reason behind the name?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("nameReason")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -508,11 +518,16 @@ export function QuestionnaireForm() {
           <span className="text-red-500">*</span>
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("businessDescription")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
         {errors.businessDescription && (
@@ -526,11 +541,16 @@ export function QuestionnaireForm() {
           What are the main values of your brand?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("brandValues")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -539,11 +559,16 @@ export function QuestionnaireForm() {
           What is your target audience?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("targetAudience")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -552,11 +577,16 @@ export function QuestionnaireForm() {
           Please state some keywords or a sentence that defines your brand.
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("brandKeywords")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -565,11 +595,16 @@ export function QuestionnaireForm() {
           What are your business goals?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("businessGoals")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -578,11 +613,16 @@ export function QuestionnaireForm() {
           Who are your main competitors and how do you differ from them?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("competitors")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -592,11 +632,16 @@ export function QuestionnaireForm() {
           colors that you do not want to use?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("logoColorPreferences")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -605,11 +650,16 @@ export function QuestionnaireForm() {
           What message or emotion do you want your logo to portray?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("logoMessage")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -618,11 +668,16 @@ export function QuestionnaireForm() {
           Do you have a specific idea in mind for your logo?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("logoIdea")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -820,11 +875,16 @@ export function QuestionnaireForm() {
           Do you have a website or social media channel?
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("websiteSocial")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -833,11 +893,16 @@ export function QuestionnaireForm() {
           Any other comments? 
         </label>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("otherComments")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
@@ -1020,11 +1085,16 @@ export function QuestionnaireForm() {
           </div>
         </div>
         <div className="border-b-[1px] pb-2 border-zinc-200">
-          <input
-            type="text"
+          <textarea
             {...register("identityOther")}
-            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+            className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
             placeholder="Your Answer"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              target.style.height = "auto";
+              target.style.height = target.scrollHeight + "px";
+            }}
           />
         </div>
       </div>
