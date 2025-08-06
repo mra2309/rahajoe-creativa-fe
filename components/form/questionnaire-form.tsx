@@ -301,11 +301,17 @@ export function QuestionnaireForm() {
               render={({ field }) => (
                 <FormItem className="relative">
                   <FormControl>
-                    <Input
+                    <textarea
                       placeholder="First Name"
-                      type="text"
                       id="firstName"
-                      className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base"
+                      className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base resize-none overflow-hidden min-h-[40px]"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height =
+                          Math.max(40, target.scrollHeight) + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -320,11 +326,17 @@ export function QuestionnaireForm() {
               render={({ field }) => (
                 <FormItem className="relative">
                   <FormControl>
-                    <Input
+                    <textarea
                       placeholder="Last Name"
-                      type="text"
                       id="lastName"
-                      className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base"
+                      className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base resize-none overflow-hidden min-h-[40px]"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height =
+                          Math.max(40, target.scrollHeight) + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -346,11 +358,17 @@ export function QuestionnaireForm() {
             render={({ field }) => (
               <FormItem className="relative">
                 <FormControl>
-                  <Input
+                  <textarea
                     placeholder="i.e john@gmail.com"
-                    type="email"
                     id="email"
-                    className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base"
+                    className="w-full border bg-white border-zinc-300 focus:outline-none rounded-md py-2 px-4 mt-2 text-sm md:text-base resize-none overflow-hidden min-h-[40px]"
+                    rows={1}
+                    onInput={(e) => {
+                      const target = e.target as HTMLTextAreaElement;
+                      target.style.height = "auto";
+                      target.style.height =
+                        Math.max(40, target.scrollHeight) + "px";
+                    }}
                     {...field}
                   />
                 </FormControl>
@@ -508,11 +526,16 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
+                    <textarea
                       id="brandName"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -534,11 +557,16 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
+                    <textarea
                       id="slogan"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -559,10 +587,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -584,10 +617,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -609,10 +647,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -633,10 +676,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -657,10 +705,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -681,10 +734,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -705,10 +763,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -730,10 +793,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -754,10 +822,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -778,10 +851,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -855,10 +933,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -879,10 +962,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
@@ -977,10 +1065,15 @@ export function QuestionnaireForm() {
               <FormItem>
                 <div className="border-b-[1px] pb-2 border-zinc-200">
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base"
+                    <textarea
+                      className="border-none placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none rounded-lg w-full text-sm md:text-base resize-none overflow-hidden min-h-[24px]"
                       placeholder="Your Answer"
+                      rows={1}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = target.scrollHeight + "px";
+                      }}
                       {...field}
                     />
                   </FormControl>
