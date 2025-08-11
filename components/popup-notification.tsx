@@ -1,6 +1,6 @@
 export function PopupNotification({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 h-full bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white relative rounded-lg p-8 max-w-md mx-4 text-center shadow-2xl">
         <div className="my-10 md:my-16">
           <div className="w-20 h-20 md:w-32 md:h-32 absolute -top-8 md:-top-16 right-0 left-0 bg-[#FFC5EB] rounded-full flex items-center justify-center mx-auto mb-4">

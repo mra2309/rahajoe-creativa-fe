@@ -19,7 +19,7 @@ const talkFormSchema = z.object({
   message: z
     .string()
     .min(1, "Message is required")
-    .min(10, "Message must be at least 10 characters"),
+    .min(2, "Message must be at least 2 characters"),
 });
 
 export function TalkForm() {
@@ -63,40 +63,52 @@ export function TalkForm() {
       className="mt-7 md:my-10 flex flex-col gap-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="border-b-[1px] border-zinc-200">
-        <input
-          type="text"
-          {...register("name")}
-          className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
-          placeholder="Your Name"
-          disabled={isSubmitting}
-        />
+      <div>
+        <div className="border-b-[1px] border-zinc-200">
+          <input
+            type="text"
+            {...register("name")}
+            className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
+            placeholder="Your Name"
+            disabled={isSubmitting}
+          />
+        </div>
         {errors.name && (
-          <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+          <p className="text-red-500 text-xs md:text-sm mt-2">
+            {errors.name.message}
+          </p>
         )}
       </div>
-      <div className="border-b-[1px] border-zinc-200">
-        <input
-          type="email"
-          {...register("email")}
-          className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
-          placeholder="Your Email"
-          disabled={isSubmitting}
-        />
+      <div>
+        <div className="border-b-[1px] border-zinc-200">
+          <input
+            type="email"
+            {...register("email")}
+            className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
+            placeholder="Your Email"
+            disabled={isSubmitting}
+          />
+        </div>
         {errors.email && (
-          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+          <p className="text-red-500 text-xs md:text-sm mt-2">
+            {errors.email.message}
+          </p>
         )}
       </div>
-      <div className="border-b-[1px] border-zinc-200">
-        <input
-          type="text"
-          {...register("message")}
-          className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
-          placeholder="Message"
-          disabled={isSubmitting}
-        />
+      <div>
+        <div className="border-b-[1px] border-zinc-200">
+          <input
+            type="text"
+            {...register("message")}
+            className="border-none text-sm md:text-base placeholder:text-zinc-400 focus:ring-0 focus:outline-none active:ring-0 active:border-none p-3 rounded-lg w-full"
+            placeholder="Message"
+            disabled={isSubmitting}
+          />
+        </div>
         {errors.message && (
-          <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+          <p className="text-red-500 text-xs md:text-sm mt-2">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
