@@ -316,7 +316,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                   <span className="absolute text-red-500 right-2 top-3">*</span>
-                  <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                  <FormMessage className="text-red-500 text-xs md:text-sm font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -341,7 +341,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                   <span className="absolute text-red-500 right-2 top-3">*</span>
-                  <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                  <FormMessage className="text-red-500 text-xs md:text-sm font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -373,7 +373,7 @@ export function QuestionnaireForm() {
                   />
                 </FormControl>
                 <span className="absolute text-red-500 right-2 top-3">*</span>
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs md:text-sm font-medium mt-1" />
               </FormItem>
             )}
           />
@@ -508,7 +508,7 @@ export function QuestionnaireForm() {
                   </div>
                 )}
 
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs md:text-sm font-medium mt-1" />
               </FormItem>
             )}
           />
@@ -540,7 +540,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                 </div>
-                <FormMessage className="text-red-500 text-xs" />
+                <FormMessage className="text-red-500 text-xs md:text-sm" />
               </FormItem>
             )}
           />
@@ -630,7 +630,7 @@ export function QuestionnaireForm() {
                     />
                   </FormControl>
                 </div>
-                <FormMessage className="text-red-500 text-xs" />
+                <FormMessage className="text-red-500 text-xs md:text-sm" />
               </FormItem>
             )}
           />
@@ -1020,7 +1020,7 @@ export function QuestionnaireForm() {
                     <label htmlFor="no">No</label>
                   </div>
                 </div>
-                <FormMessage className="text-red-500 text-xs font-medium mt-1" />
+                <FormMessage className="text-red-500 text-xs md:text-sm font-medium mt-1" />
               </FormItem>
             )}
           />
