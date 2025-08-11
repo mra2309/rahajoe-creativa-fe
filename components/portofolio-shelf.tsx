@@ -61,7 +61,7 @@ export function PortofolioShelf() {
   // Show loading state when products are being fetched
   if (isProductsLoading) {
     return (
-      <div className="max-w-5xl mx-auto grid grid-cols-4 gap-5 md:gap-10">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10">
         {Array.from({ length: 16 }).map((_, index) => (
           <div
             key={index}
@@ -88,7 +88,7 @@ export function PortofolioShelf() {
   }
   return (
     <>
-      <div className="max-w-5xl mx-auto grid grid-cols-4 gap-5 md:gap-10">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10">
         {displayedWorks.map((work, index) => {
           const isNewItem = index >= 16 && newItemsLoaded;
           return (
