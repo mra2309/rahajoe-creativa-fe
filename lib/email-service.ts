@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Email service configuration
 // You can use any email service provider like SendGrid, Resend, Nodemailer, etc.
 
