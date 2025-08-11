@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useClients } from "@/hooks/use-client";
-import { useState } from "react";
 
 export default function ClientShelf() {
   const { data: clientsData, isLoading } = useClients();
