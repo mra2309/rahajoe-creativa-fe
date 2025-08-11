@@ -64,7 +64,7 @@ export function Footer() {
                 href="/terms-and-condition"
                 className="text-xs md:text-base font-light"
               >
-                TERMS & CONDITION
+                TERMS & CONDITIONS
               </Link>
             </div>
           </div>
