@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer";
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Email service configuration
 // You can use any email service provider like SendGrid, Resend, Nodemailer, etc.
@@ -35,6 +37,7 @@ export const emailConfig = {
 export const sendEmail = async (data: {
   to: string;
   from: string;
+  replyTo?: string;
   subject: string;
   html: string;
   text: string;
@@ -42,11 +45,11 @@ export const sendEmail = async (data: {
   // Choose your preferred email service
   // return await sendWithSendGrid(data);
   // return await sendWithResend(data);
-  // return await sendWithNodemailer(data);
+  return await sendWithNodemailer(data);
 
-  // For now, just log the email data
-  //   console.log("Email to be sent:", data);
-  return { success: true };
+  // For development, you can uncomment this to just log the email data
+  // console.log("Email to be sent:", data);
+  // return { success: true };
 };
 
 // Example SendGrid implementation
@@ -117,35 +120,34 @@ export const sendWithResend = async (data: {
 export const sendWithNodemailer = async (data: {
   to: string;
   from: string;
+  replyTo?: string;
   subject: string;
   html: string;
   text: string;
 }) => {
-  // Uncomment and install nodemailer to use SMTP
-  /*
-  const nodemailer = require('nodemailer');
-  
-  const transporter = nodemailer.createTransporter({
-    host: emailConfig.smtp.host,
-    port: emailConfig.smtp.port,
-    secure: emailConfig.smtp.secure,
-    auth: emailConfig.smtp.auth,
-  });
-
   try {
-    const info = await transporter.sendMail({
+    const transporter = nodemailer.createTransport({
+      host: emailConfig.smtp.host,
+      port: emailConfig.smtp.port,
+      secure: emailConfig.smtp.secure,
+      auth: emailConfig.smtp.auth,
+    });
+
+    const mailOptions = {
       from: data.from,
       to: data.to,
       subject: data.subject,
       text: data.text,
       html: data.html,
-    });
+      ...(data.replyTo && { replyTo: data.replyTo }), // Add replyTo conditionally
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log("Email sent successfully:", info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Nodemailer error:', error);
+    console.error("Nodemailer error:", error);
     throw error;
   }
-  */
-  //   console.log("Nodemailer email (mock):", data);
-  return { success: true };
 };

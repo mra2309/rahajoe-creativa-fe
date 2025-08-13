@@ -7,6 +7,10 @@ import { PopupNotification } from "../popup-notification";
 import { useCreateOrder } from "@/hooks/use-create-order";
 import { FileUpload } from "../file-upload";
 import {
+  sendQuestionnaireEmail,
+  sendConfirmationEmail,
+} from "@/lib/email-sender";
+import {
   Form,
   FormControl,
   FormField,
@@ -256,6 +260,21 @@ export function QuestionnaireForm() {
       };
 
       await createOrderMutation.mutateAsync(orderData);
+
+      // Send emails after successful order creation
+      try {
+        // Send notification email to admin/owner
+        await sendQuestionnaireEmail(cleanedData);
+        console.log("Admin notification email sent successfully");
+
+        // Send confirmation email to client (automatic with questionnaire email)
+        await sendConfirmationEmail();
+        console.log("Client confirmation email sent successfully");
+      } catch (emailError) {
+        console.error("Error sending emails:", emailError);
+        // Don't block the success flow if email fails
+        // The order was already created successfully
+      }
 
       // Show success popup and reset form
       setShowSuccessPopup(true);

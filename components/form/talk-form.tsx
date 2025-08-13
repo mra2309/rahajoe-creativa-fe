@@ -6,6 +6,7 @@ import { useState } from "react";
 import { PopupNotification } from "@/components/popup-notification";
 import { useCreateContact } from "@/hooks/use-create-contact";
 import { ContactFormData } from "@/types/contact";
+import { sendContactEmail } from "@/lib/email-sender";
 
 const talkFormSchema = z.object({
   name: z
@@ -48,6 +49,17 @@ export function TalkForm() {
       ) as ContactFormData;
 
       await createContactMutation.mutateAsync(filteredData);
+
+      // Send email notification after successful contact creation
+      try {
+        await sendContactEmail({
+          name: filteredData.name,
+          email: filteredData.email,
+          message: filteredData.message,
+        });
+      } catch (emailError) {
+        console.error("Error sending contact email:", emailError);
+      }
 
       // Show success popup and reset form
       setShowSuccessPopup(true);
