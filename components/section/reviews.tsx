@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reviews } from "../reviews";
+import Link from "next/link";
 
 export function ReviewsSection() {
   return (
@@ -9,7 +10,11 @@ export function ReviewsSection() {
           The love we get!
         </h1>
         <Reviews />
-        <div className="flex justify-end mt-10">
+        <Link
+          href="https://maps.app.goo.gl/ZoMz7MCw2GAY54W56"
+          target="_blank"
+          className="flex justify-end mt-10"
+        >
           <button className="font-bold text-sm md:text-2xl underline underline-offset-3 flex cursor-pointer items-center gap-3 md:gap-6 justify-end group">
             Read More
             <div className="transition-transform duration-300 group-hover:translate-x-2 relative w-4 h-4 md:w-7 md:h-7">
@@ -25,7 +30,7 @@ export function ReviewsSection() {
               />
             </div>
           </button>
-        </div>
+        </Link>
       </div>
     </section>
   );
